@@ -1,0 +1,40 @@
+package com.udg.edu.me;
+
+public class Motocikl extends Vozilo {
+	private float kilometraza;
+
+	public float getKilometraza() {
+		return kilometraza;
+	}
+
+	public void setKilometraza(float kilometraza) {
+		if(kilometraza >= 0)
+		this.kilometraza = kilometraza;
+	}
+	
+	public Motocikl() {
+		this(null, null, 0, 1945, 0);
+	}
+
+	public Motocikl(String marka, String model, int kubikaza, int godiste, float kilometraza) {
+		super(marka, model, kubikaza, godiste);
+		this.setKilometraza(kilometraza);
+	}
+
+	@Override
+	public String toString() {
+		return "Motocikl [kilometraza=" + kilometraza + ", marka=" + getMarka() + ", model=" + getModel()
+				+ ", kubikaza=" + getKubikaza() + ", godiste=" + getGodiste() + "]";
+	}
+
+	@Override
+	public float dajCijenuRegistracije() {
+		float cijena;
+		
+		cijena = ((float)this.getKubikaza()/5 +
+				(float)this.getKilometraza()/1000) * Vozilo.getOsnovicaZaRegistraciju();
+		return cijena;
+	}
+	
+
+}
